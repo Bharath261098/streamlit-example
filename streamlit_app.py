@@ -10,7 +10,7 @@ image = Image.open('exl.png')
 
 with st.sidebar:
     st.image(image, width = 150)
-    st.header('Call Summarizier')
+    st.header('Call Summarizer')
 
 def generate_summary(text):
     prompt = "summarize the conversation provided and also suggest the next action item for the Customer and Executive:\n\n"
@@ -42,7 +42,7 @@ def get_next_action_items(summary):
     return customer_action_items, executive_action_item
 
 def main():
-    st.title('Text Summarizer')
+    st.title('Call Summarizer')
     st.write('Upload a text file to generate a summary and identify the next action items for the customer and executive.')
 
     uploaded_file = st.file_uploader('Upload File', type=['txt'])
