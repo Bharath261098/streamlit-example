@@ -1,6 +1,8 @@
 import openai
 import streamlit as st
 
+from PIL import Image
+
 # Configure OpenAI API
 openai.api_key = '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'
 
