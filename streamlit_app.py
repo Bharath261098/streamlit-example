@@ -33,7 +33,7 @@ def get_next_action_items(summary):
     return action_items
 
 def main():
-    st.title('Text Summarizer')
+    st.title('Call Summarizer')
     st.write('Upload a text file to generate a summary and identify next action items.')
 
     uploaded_file = st.file_uploader('Upload File', type=['txt'])
