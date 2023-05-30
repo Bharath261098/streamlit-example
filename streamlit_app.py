@@ -1,38 +1,57 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
+import openai
 import streamlit as st
 
-"""
-# Welcome to Streamlit!
+# Configure OpenAI API
+openai.api_key = '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'
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+def generate_summary(text):
+    prompt = "summarize the conversation provided and also suggest the next action item for the Customer and Executive:\n\n"
+    prompt += text
+    response = openai.Completion.create(
+        engine='text-davinci-003',
+        prompt=prompt,
+        max_tokens=100,
+        temperature=0.5,
+        n=1,
+        stop=None,
+        top_p=None,
+        frequency_penalty=0.2,
+        presence_penalty=0.8
+    )
+    summary = response.choices[0].text.strip()
+    return summary
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+def get_next_action_items(summary):
+    action_items = []
+    sentences = summary.split('. ')
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if 'customer' in sentence.lower():
+            action_items.append(sentence)
+        if 'executive' in sentence.lower():
+            action_items.append(sentence)
+    return action_items
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+def main():
+    st.title('Text Summarizer')
+    st.write('Upload a text file to generate a summary and identify next action items.')
 
+    uploaded_file = st.file_uploader('Upload File', type=['txt'])
 
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+    if uploaded_file is not None:
+        content = uploaded_file.read().decode('utf-8')
+        summary = generate_summary(content)
+        action_items = get_next_action_items(summary)
 
-    Point = namedtuple('Point', 'x y')
-    data = []
+        st.header('Summary')
+        st.write(summary)
 
-    points_per_turn = total_points / num_turns
+        st.header('Next Action Items')
+        if len(action_items) > 0:
+            for item in action_items:
+                st.write(f'- {item}')
+        else:
+            st.write('No action items identified.')
 
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
-
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+if __name__ == '__main__':
+    main()
