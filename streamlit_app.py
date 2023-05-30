@@ -8,7 +8,7 @@ image = Image.open('exl.png')
 
 with st.sidebar:
     st.image(image, width = 150)
-    st.header('Conversational BI')
+    st.header('Call Summarizier')
 
 def generate_summary(text):
     prompt = "summarize the conversation provided and also suggest the next action item for the Customer and Executive:\n\n"
