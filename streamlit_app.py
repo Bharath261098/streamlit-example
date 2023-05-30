@@ -28,36 +28,44 @@ def generate_summary(text):
     return summary
 
 def get_next_action_items(summary):
-    action_items = []
+    customer_action_items = []
+    executive_action_item = ""
     sentences = summary.split('. ')
     for sentence in sentences:
         sentence = sentence.strip()
         if 'customer' in sentence.lower():
-            action_items.append(sentence)
+            customer_action_items.append(sentence)
         if 'executive' in sentence.lower():
-            action_items.append(sentence)
-    return action_items
+            executive_action_item = sentence
+    return customer_action_items, executive_action_item
 
 def main():
-    st.title('Call Summarizer')
-    st.write('Upload a text file to generate a summary and identify next action items.')
+    st.title('Text Summarizer')
+    st.write('Upload a text file to generate a summary and identify the next action items for the customer and executive.')
 
     uploaded_file = st.file_uploader('Upload File', type=['txt'])
 
     if uploaded_file is not None:
         content = uploaded_file.read().decode('utf-8')
         summary = generate_summary(content)
-        action_items = get_next_action_items(summary)
+        customer_action_items, executive_action_item = get_next_action_items(summary)
 
         st.header('Summary')
         st.write(summary)
 
         st.header('Next Action Items')
-        if len(action_items) > 0:
-            for item in action_items:
+        if len(customer_action_items) > 0:
+            st.subheader('For the Customer')
+            for item in customer_action_items:
                 st.write(f'- {item}')
         else:
-            st.write('No action items identified.')
+            st.write('No customer action items identified.')
+
+        if executive_action_item:
+            st.subheader('For the Executive')
+            st.write(f'- {executive_action_item}')
+        else:
+            st.write('No executive action item identified.')
 
 if __name__ == '__main__':
     main()
