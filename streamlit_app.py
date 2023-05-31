@@ -15,7 +15,7 @@ with st.sidebar:
     st.header('Service Call Summarizer')
 
 def generate_summary(text):
-    prompt = "summarize the conversation provided and also suggest the next action item for the Customer and Executive:\n\n"
+    prompt = "summarize the conversation in bullet points and also suggest the next action item for the Customer and Executive:\n\n"
     prompt += text
     response = openai.Completion.create(
         engine='text-davinci-003',
@@ -45,7 +45,7 @@ def get_next_action_items(summary):
 
 def main():
     st.title('Call Summarizer')
-    st.write('Upload a text file to generate a summary and identify the next action items for the customer and executive.')
+    st.write('Upload a text file to generate a summary and identify the next action items.')
 
     uploaded_file = st.file_uploader('Upload File', type=['txt'])
 
@@ -57,7 +57,7 @@ def main():
         st.header('Summary')
         st.write(summary)
 
-        st.header('Next Action Items')
+        st.header('Action Items')
         if len(customer_action_items) > 0:
             st.subheader('For the Customer')
             for item in customer_action_items:
