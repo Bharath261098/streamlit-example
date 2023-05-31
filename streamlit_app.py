@@ -57,19 +57,5 @@ def main():
         st.header('Summary')
         st.write(summary)
 
-        st.header('Action Items')
-        if len(customer_action_items) > 0:
-            st.subheader('For the Customer')
-            for item in customer_action_items:
-                st.write(f'- {item}')
-        else:
-            st.write('No customer action items identified.')
-
-        if executive_action_item:
-            st.subheader('For the Executive')
-            st.write(f'- {executive_action_item}')
-        else:
-            st.write('No executive action item identified.')
-
 if __name__ == '__main__':
     main()
