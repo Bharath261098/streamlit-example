@@ -15,7 +15,7 @@ with st.sidebar:
     st.header('Service Call Summarizer')
 
 def generate_summary(text):
-    prompt = "summarize the conversation in bullet points and also suggest the next action item for the Customer and Executive:\n\n"
+    prompt = "summarize the conversation in bullet points and also suggest one action item for the Customer and the Executive:\n\n"
     prompt += text
     response = openai.Completion.create(
         engine='text-davinci-003',
