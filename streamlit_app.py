@@ -1,10 +1,12 @@
 import openai
 import streamlit as st
-
+from pandasai import PandasAI
+from pandasai.llm.openai import OpenAI
 from PIL import Image
 
 # Configure OpenAI API
-openai.api_key = ''
+llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
+pandas_ai = PandasAI(llm, conversational=False)
 
 image = Image.open('exl.png')
 
