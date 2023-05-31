@@ -33,20 +33,17 @@ def generate_summary(text):
     return summary
 
 def get_next_action_items(summary):
-    customer_action_item = None
-    executive_action_item = None
+    customer_action_items = []
+    executive_action_item = ""
     sentences = summary.split('. ')
     for sentence in sentences:
         sentence = sentence.strip()
-        if 'customer' in sentence.lower() and not customer_action_item:
+        if 'customer' in sentence.lower():
             if not sentence.startswith("Summarized Conversation:"):
-                sentence = sentence.lstrip('-• ')  # Remove bullet symbols
-                customer_action_item = sentence
-        if 'executive' in sentence.lower() and not executive_action_item:
-            sentence = sentence.lstrip('-• ')  # Remove bullet symbols
+                customer_action_items.append(sentence)
+        if 'executive' in sentence.lower():
             executive_action_item = sentence
-    return customer_action_item, executive_action_item
-
+    return customer_action_items, executive_action_item
 
 
 def main():
