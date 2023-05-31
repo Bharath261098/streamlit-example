@@ -44,7 +44,7 @@ def get_next_action_items(summary):
     return customer_action_items, executive_action_item
 
 def main():
-    st.title('Call Summarizer')
+    st.title('Service Call Summarizer')
     st.write('Upload a text file to generate a summary and identify the next action items.')
 
     uploaded_file = st.file_uploader('Upload File', type=['txt'])
