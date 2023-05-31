@@ -29,6 +29,7 @@ def generate_summary(text):
         presence_penalty=0.8
     )
     summary = response.choices[0].text.strip()
+    summary = summary.replace("Summarized Conversation:\n\n", "")  # Remove the title
     return summary
 
 def get_next_action_items(summary):
