@@ -39,10 +39,12 @@ def get_next_action_items(summary):
     for sentence in sentences:
         sentence = sentence.strip()
         if 'customer' in sentence.lower():
-            customer_action_items.append(sentence)
+            if not sentence.startswith("Summarized Conversation:"):
+                customer_action_items.append(sentence)
         if 'executive' in sentence.lower():
             executive_action_item = sentence
     return customer_action_items, executive_action_item
+
 
 def main():
     st.title('Service Call Summarizer')
