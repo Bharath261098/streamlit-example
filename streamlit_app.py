@@ -56,8 +56,19 @@ def main():
         customer_action_items = []
         executive_action_items = []
 
+        files = []
         for uploaded_file in uploaded_files:
-            content = uploaded_file.read().decode('utf-8')
+            file_info = {
+                'name': uploaded_file.name,
+                'content': uploaded_file.read().decode('utf-8')
+            }
+            files.append(file_info)
+
+        # Sort files based on the file names
+        files.sort(key=lambda x: ('raised' in x['name'], 'followup' in x['name'], 'settled' not in x['name']))
+
+        for file_info in files:
+            content = file_info['content']
             summary = generate_summary(content)
             summaries.append(summary)
 
