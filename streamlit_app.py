@@ -33,17 +33,20 @@ def generate_summary(text):
     return summary
 
 def get_next_action_items(summary):
-    customer_action_items = []
+    customer_action_item = ""
     executive_action_item = ""
+
     sentences = summary.split('. ')
     for sentence in sentences:
         sentence = sentence.strip()
-        if 'customer' in sentence.lower():
-            if not sentence.startswith("Summarized Conversation:"):
-                customer_action_items.append(sentence)
-        if 'executive' in sentence.lower():
+        if 'customer' in sentence.lower() and not sentence.startswith("Summary"):
+            customer_action_item = sentence
+            break
+        if 'executive' in sentence.lower() and not sentence.startswith("Summary"):
             executive_action_item = sentence
-    return customer_action_items, executive_action_item
+            break
+
+    return customer_action_item, executive_action_item
 
 def main():
     st.title('Service Call Summarizer')
