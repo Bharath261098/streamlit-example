@@ -46,7 +46,6 @@ def get_next_action_items(summary):
             executive_action_item = sentence
             break
 
-    return customer_action_item, executive_action_item
 
 def main():
     st.title('Service Call Summarizer')
