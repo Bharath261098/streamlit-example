@@ -46,3 +46,37 @@ def get_next_action_items(summary):
             executive_action_item = sentence
             break
     return customer_action_item.strip('*'), executive_action_item.strip('*')
+
+def main():
+    st.title('Service Call Summarizer')
+    st.write('Upload text files to generate a summary and identify the next action items.')
+
+    uploaded_files = st.file_uploader('Upload Files', type=['txt'], accept_multiple_files=True)
+    uploaded_files = sorted(uploaded_files, key=lambda file: int(file.name.split("claim")[1]))
+
+    if uploaded_files:
+        content = ""
+        for file in uploaded_files:
+            content += file.read().decode('utf-8') + "\n"
+
+        summary = generate_summary(content)
+        customer_action_item, executive_action_item = get_next_action_items(summary)
+
+        st.header('Summary')
+        st.write(summary)
+
+        st.header('Action Items')
+        if customer_action_item:
+            st.subheader('For the Customer')
+            st.write(f'- {customer_action_item}')
+        else:
+            st.write('No customer action item identified.')
+
+        if executive_action_item:
+            st.subheader('For the Executive')
+            st.write(f'- {executive_action_item}')
+        else:
+            st.write('No executive action item identified.')
+
+if __name__ == '__main__':
+    main()
