@@ -54,6 +54,14 @@ def extract_claim_number(file_name):
         return int(match.group(1))
     return 0
 
+import re
+
+def extract_claim_number(file_name):
+    match = re.search(r'claim(\d+)', file_name)
+    if match:
+        return int(match.group(1))
+    return 0
+
 def main():
     st.title('Service Call Summarizer')
     st.write('Upload text files to generate a summary and identify the next action items.')
