@@ -1,4 +1,5 @@
 import openai
+import re
 import streamlit as st
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
@@ -47,12 +48,18 @@ def get_next_action_items(summary):
             break
     return customer_action_item.strip('*'), executive_action_item.strip('*')
 
+def extract_claim_number(file_name):
+    match = re.search(r'claim(\d+)', file_name)
+    if match:
+        return int(match.group(1))
+    return 0
+
 def main():
     st.title('Service Call Summarizer')
     st.write('Upload text files to generate a summary and identify the next action items.')
 
     uploaded_files = st.file_uploader('Upload Files', type=['txt'], accept_multiple_files=True)
-    uploaded_files = sorted(uploaded_files, key=lambda file: int(file.name.split("claim")[1]))
+    uploaded_files = sorted(uploaded_files, key=lambda file: extract_claim_number(file.name))
 
     if uploaded_files:
         content = ""
