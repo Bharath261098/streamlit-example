@@ -45,6 +45,7 @@ def get_next_action_items(summary):
         if 'executive' in sentence.lower() and not sentence.startswith("Summary"):
             executive_action_item = sentence
             break
+    return customer_action_item.strip('*'), executive_action_item.strip('*')
 
 
 def main():
