@@ -73,8 +73,33 @@ def show_claims_page():
 | 06/02/2023 | John Doeh     | Health Insurance   | Medical expenses reimbursement        | Review settlement details                    | $10,000      | Settled      |
 """
     st.markdown(claims_table)
-
+    
 def main():
+    # Set page configuration
+    st.set_page_config(
+        page_title='Service Call Summarizer',
+        page_icon='exl.png',
+        layout='wide',
+        initial_sidebar_state='auto',
+        menu_items={
+            'Get Help': 'https://docs.streamlit.io',
+            'Report a Bug': 'https://github.com/streamlit/streamlit/issues',
+            'About': 'https://streamlit.io/about'
+        }
+    )
+
+    # Set custom CSS for font
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            font-family: 'Arial', sans-serif;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.title('Service Call Summarizer')
     st.write('Upload text files to generate a summary and identify the next action items.')
 
