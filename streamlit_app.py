@@ -86,7 +86,7 @@ def main():
             st.write('No executive action item identified.')
 
         # Static summary information below upload button
-        st.header('Static Summary Information')
+        st.header('Previous Summary Information')
         st.write("""04/02/2023 -
             Customer inquires about the status of their insurance claim.
             Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.
