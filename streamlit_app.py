@@ -15,6 +15,13 @@ with st.sidebar:
     st.image(image, width=150)
     st.header('Service Call Summarizer')
 
+    # Add navigation section
+    st.sidebar.header('Navigation')
+    if st.sidebar.button('View Claims'):
+        page = 'claims'
+    else:
+        page = 'summary'
+
 def generate_summary(text):
     prompt = "summarize the conversation in bullet points and also suggest one action item for the Customer and the Executive:\n\n"
     prompt += text
@@ -88,17 +95,30 @@ def main():
         # Static summary information below upload button
         st.header('Previous Summary Information')
         st.write("""04/02/2023 - \n
-            Customer inquires about the status of their insurance claim. \n
-            Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy. \n
-            Customer confirms the payment method and when they can expect to receive the settlement amount. \n
-            Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details \n
+            Customer inquires about the status of their insurance claim.\n
+            Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.\n
+            Customer confirms the payment method and when they can expect to receive the settlement amount.\n
+            Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n
 
-02/02/2023 - \n
-            Customer is raising an insurance claim for a recent car accident. \n
-            Executive verifies the policy details and requests additional information about the incident. \n
-            Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved. \n
-            Executive initiates the claim process and informs the customer that they may need to provide supporting documents. \n
-            Customer agrees \n""") 
+        02/02/2023 -
+            Customer is raising an insurance claim for a recent car accident.\n
+            Executive verifies the policy details and requests additional information about the incident.\n
+            Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n
+            Executive initiates the claim process and informs the customer that they may need to provide supporting documents.\n
+            Customer agrees\n""")
+
+    # Navigate to the next page based on the button click
+    if page == 'claims':
+        show_claims_page()
+
+def show_claims_page():
+    st.title('Claims')
+    # Create a static table with the given columns
+    st.write('Date, Customer name, Claim Type, Claim Description, Action item, Claim amount, Claim status')
+    st.write('02/02/2023, John Doe, Health Insurance, Medical expenses reimbursement, Raise a claim request with insurance provider, $10,000, Started')
+    st.write('04/02/2023, John Doe, Health Insurance, Medical expenses reimbursement, Follow up with insurance provider, $10,000, Under Review')
+    st.write('02/02/2023, John Doe, Health Insurance, Medical expenses reimbursement, Review settlement details, $5,000, Setteled')
+    # Add more rows as needed
 
 if __name__ == '__main__':
     main()
