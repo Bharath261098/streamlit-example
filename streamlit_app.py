@@ -1,5 +1,6 @@
 import openai
 import re
+import datetime
 import streamlit as st
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
@@ -23,6 +24,7 @@ with st.sidebar:
         page = 'summary'
 
 def generate_summary(text):
+    st.write('Today\'s Date:', datetime.date.today())
     prompt = "summarize the conversation in bullet points and also suggest one action item for the Customer and the Executive:\n\n"
     prompt += text
     response = openai.Completion.create(
