@@ -88,7 +88,7 @@ def main():
         # Static summary information below upload button
         st.header('Previous Summary Information')
         st.write("""04/02/2023 -
-            Customer inquires about the status of their insurance claim.
+            Customer inquires about the status of their insurance claim. \n
             Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.
             Customer confirms the payment method and when they can expect to receive the settlement amount.
             Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details
