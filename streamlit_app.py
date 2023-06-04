@@ -73,7 +73,7 @@ def show_claims_page():
 | 06/02/2023 | John Doeh     | Health Insurance   | Medical expenses reimbursement        | Review settlement details                    | $10,000      | Settled      |
 """
     st.markdown(claims_table)
-    
+
 def main():
     # Set page configuration
     st.set_page_config(
@@ -99,7 +99,7 @@ def main():
         """,
         unsafe_allow_html=True
     )
-    
+
     st.title('Service Call Summarizer')
     st.write('Upload text files to generate a summary and identify the next action items.')
 
