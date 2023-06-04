@@ -61,6 +61,16 @@ def extract_claim_number(file_name):
         return int(match.group(1))
     return 0
 
+def show_claims_page():
+    st.title('Claims')
+    claims_table = """| Date       | Customer name | Claim Type         | Claim Description                     | Action item                              | Claim amount | Claim status |
+|------------|---------------|--------------------|---------------------------------------|-----------------------------------------|--------------|--------------|
+| 02/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Raise a claim request with insurance provider | $10,000      | Approved     |
+| 04/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Follow up with insurance provider             | $10,000      | In progress  |
+| 06/02/2023 | John Doeh     | Health Insurance   | Medical expenses reimbursement        | Review settlement details                    | $10,000      | Settled      |
+"""
+    st.markdown(claims_table)
+
 def main():
     st.title('Service Call Summarizer')
     st.write('Upload text files to generate a summary and identify the next action items.')
@@ -109,19 +119,6 @@ def main():
 
         if page == 'claims':
             show_claims_page()
-        elif page == 'View Claims':
-        # Clear the summary placeholder to hide the summary
-        summary_placeholder.empty()
-
-        st.title('Claims')
-        claims_table = """| Date       | Customer name | Claim Type         | Claim Description                     | Action item                              | Claim amount | Claim status |
-|------------|---------------|--------------------|---------------------------------------|-----------------------------------------|--------------|--------------|
-| 02/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Raise a claim request with insurance provider | $10,000      | Approved     |
-| 04/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Follow up with insurance provider             | $10,000      | In progress  |
-| 06/02/2023 | John Doeh     | Health Insurance   | Medical expenses reimbursement        | Review settlement details                    | $10,000      | Settled      |
-"""
-        st.markdown(claims_table)
-
 
 if __name__ == '__main__':
     main()
