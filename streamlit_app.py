@@ -100,24 +100,23 @@ def main():
             Customer confirms the payment method and when they can expect to receive the settlement amount.\n
             Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n
 
-        02/02/2023 -
+        02/02/2023 -\n
             Customer is raising an insurance claim for a recent car accident.\n
             Executive verifies the policy details and requests additional information about the incident.\n
             Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n
             Executive initiates the claim process and informs the customer that they may need to provide supporting documents.\n
             Customer agrees\n""")
 
-    # Navigate to the next page based on the button click
-    if page == 'claims':
-        show_claims_page()
+        if page == 'claims':
+            show_claims_page()
 
-    def show_claims_page():
-        st.title('Claims')
-        claims_table = """| Date | Customer name | Claim Type | Claim Description | Action item | Claim amount | Claim status |
-|------|---------------|------------|-------------------|-------------|--------------|--------------|
-| 02/02/2023 | John Doe | Health Insurance | Medical expenses reimbursement | Raise a claim request with insurance provider | $10,000 | Approved |
-| 04/02/2023 | John Doe | Health Insurance | Medical expenses reimbursement | Follow up with insurance provider | $10,000 | In progress |
-| 06/02/2023 | John Doeh | Health Insurance | Medical expenses reimbursement | Review settlement detailst | $10,000 | Settled |
+def show_claims_page():
+    st.title('Claims')
+    claims_table = """| Date       | Customer name | Claim Type         | Claim Description                     | Action item                              | Claim amount | Claim status |
+|------------|---------------|--------------------|---------------------------------------|-----------------------------------------|--------------|--------------|
+| 02/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Raise a claim request with insurance provider | $10,000      | Approved     |
+| 04/02/2023 | John Doe      | Health Insurance   | Medical expenses reimbursement        | Follow up with insurance provider             | $10,000      | In progress  |
+| 06/02/2023 | John Doeh     | Health Insurance   | Medical expenses reimbursement        | Review settlement details                    | $10,000      | Settled      |
 """
     st.markdown(claims_table)
 
