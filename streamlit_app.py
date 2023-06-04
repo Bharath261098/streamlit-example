@@ -87,17 +87,18 @@ def main():
 
         # Static summary information below upload button
         st.header('Previous Summary Information')
-        st.write("04/02/2023 -\n"
-                 "Customer inquires about the status of their insurance claim.\n"
-                 "Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.\n"
-                 "Customer confirms the payment method and when they can expect to receive the settlement amount.\n"
-                 "Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n\n"
-                 "02/02/2023 -\n"
-                 "Customer is raising an insurance claim for a recent car accident.\n"
-                 "Executive verifies the policy details and requests additional information about the incident.\n"
-                 "Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n"
-                 "Executive initiates the claim process and informs the customer that they may need to provide supporting documents.\n"
-                 "Customer agrees")
+        st.write("""04/02/2023 -
+            Customer inquires about the status of their insurance claim.
+            Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.
+            Customer confirms the payment method and when they can expect to receive the settlement amount.
+            Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details
+
+02/02/2023 -
+            Customer is raising an insurance claim for a recent car accident.
+            Executive verifies the policy details and requests additional information about the incident.
+            Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.
+            Executive initiates the claim process and informs the customer that they may need to provide supporting documents.
+            Customer agrees""")
 
 if __name__ == '__main__':
     main()
