@@ -65,8 +65,8 @@ def main():
         st.header('Service Call Summarizer')
 
         # Add navigation section
-        st.sidebar.header('Navigation')
-        if st.sidebar.button('View Claims'):
+        st.sidebar.header('')
+        if st.sidebar.button('Claims History'):
             page = 'claims'
         else:
             page = 'summary'
