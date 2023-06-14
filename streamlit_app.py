@@ -6,6 +6,9 @@ from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 from PIL import Image
 
+llm = OpenAI(api_token=st.secrets["chat_gpt_key"])
+pandas_ai = PandasAI(llm, conversational=False)
+
 def generate_summary(text):
     today = datetime.date.today().strftime('%d-%m-%Y')
     st.write('Today\'s Date:', today)
