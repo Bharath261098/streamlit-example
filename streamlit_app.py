@@ -104,20 +104,8 @@ def main():
         else:
             st.write('No executive action item identified.')
 
-        # Static summary information below upload button
-        st.header('Previous Summary Information')
-        st.write("""04/02/2023 - \n
-            Customer inquires about the status of their insurance claim.\n
-            Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.\n
-            Customer confirms the payment method and when they can expect to receive the settlement amount.\n
-            Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n
-
-        02/02/2023 -\n
-            Customer is raising an insurance claim for a recent car accident.\n
-            Executive verifies the policy details and requests additional information about the incident.\n
-            Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n
-            Executive initiates the claim process and informs the customer that they may need to provide supporting documents.\n
-            Customer agrees\n""")
+        # Display static summary information within a box
+        st.info('Previous Summary Information\n\n04/02/2023 - \n\nCustomer inquires about the status of their insurance claim.\n\nExecutive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.\n\nCustomer confirms the payment method and when they can expect to receive the settlement amount.\n\nExecutive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n\n02/02/2023 -\n\nCustomer is raising an insurance claim for a recent car accident.\n\nExecutive verifies the policy details and requests additional information about the incident.\n\nCustomer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n\nExecutive initiates the claim process and informs the customer that they may need to provide supporting documents.\n\nCustomer agrees')
 
         if page == 'claims':
             show_claims_page()
