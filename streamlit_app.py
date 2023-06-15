@@ -104,8 +104,40 @@ def main():
         else:
             st.write('No executive action item identified.')
 
-        # Display static summary information within a box
-        st.info('Previous Summary Information\n\n04/02/2023 - \n\nCustomer inquires about the status of their insurance claim.\n\nExecutive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.\n\nCustomer confirms the payment method and when they can expect to receive the settlement amount.\n\nExecutive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details\n\n02/02/2023 -\n\nCustomer is raising an insurance claim for a recent car accident.\n\nExecutive verifies the policy details and requests additional information about the incident.\n\nCustomer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.\n\nExecutive initiates the claim process and informs the customer that they may need to provide supporting documents.\n\nCustomer agrees', bg_color='black')
+        # Display static summary information with custom CSS styling for black box
+        st.markdown(
+            '''
+            <style>
+            .black-box {
+                background-color: black;
+                color: white;
+                padding: 20px;
+            }
+            </style>
+            '''
+            , unsafe_allow_html=True
+        )
+
+        st.markdown(
+            '''
+            <div class="black-box">
+            <p>Previous Summary Information</p>
+            <p>04/02/2023 - </p>
+            <p>•Customer inquires about the status of their insurance claim.</p>
+            <p>•Executive checks the claim status and informs the customer that it has been approved and the settlement amount will be sent via the payment method specified in their policy.</p>
+            <p>•Customer confirms the payment method and when they can expect to receive the settlement amount.</p>
+            <p>•Executive confirms that the payment will be deposited into their bank account within five business days and suggests reviewing the settlement details</p>
+
+            <p>02/02/2023 -</p>
+            <p>•Customer is raising an insurance claim for a recent car accident.</p>
+            <p>•Executive verifies the policy details and requests additional information about the incident.</p>
+            <p>•Customer provides the additional information, including date and time of the accident, a description of what happened, and if there were any injuries involved.</p>
+            <p>•Executive initiates the claim process and informs the customer that they may need to provide supporting documents.</p>
+            <p>•Customer agrees</p>
+            </div>
+            '''
+            , unsafe_allow_html=True
+        )
 
         if page == 'claims':
             show_claims_page()
